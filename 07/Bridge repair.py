@@ -1,5 +1,5 @@
-filnavn = "eks1.txt"
-# filnavn = "input.txt"
+# filnavn = "eks1.txt"
+filnavn = "input.txt"
 løsning = 0
 
 def multOrAdd(resultat,svar,i,tallListe, løsning:list):
