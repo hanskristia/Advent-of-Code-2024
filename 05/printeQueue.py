@@ -1,5 +1,6 @@
 
 filnavn = "eks1.txt"
+filnavn = "input.txt"
 
 with open(filnavn) as fil:
     regler = {}
@@ -15,7 +16,7 @@ with open(filnavn) as fil:
             if x in regler:
                 # print("legger til ",x, " finnes fra før")
                 regler[x].append(y)
-                print(regler)
+                # print(regler)
             else:
                 # print("legger til ",x," - ",y, " fantes ikke fra før")
                 regler[x]=[y]
@@ -31,17 +32,16 @@ def sjekkSide(side):
     # print(regler)
     passert=[]
     for tall in side: 
-        # print(tall)
-        if tall in regler:
-            # print("har regeler", regler[tall], passert)
-            for tidligere in passert:
-                # print(tall,tidligere, tidligere in regler[tall])
-                if tidligere in regler[tall]:
-                    return False
-            passert.append(tall)
+        if tall in regler: # om det er et tall med regler:
+            if any([tidligere in regler[tall] for tidligere in passert]):
+                return False
+            # for tidligere in passert:
+            #     if tidligere in regler[tall]:
+            #         return False
         else:
             # print(tall," Har ingen regler")
             pass
+        passert.append(tall)
     return True
 løsning = 0
 def midten(liste):
@@ -50,10 +50,11 @@ def midten(liste):
 for side in sider:
     test = sjekkSide(side)
     if test:
-        print(midten(side))
+        # print(midten(side))
         løsning += int(midten(side))
     else:
-        print(side)
+        # print(side)
+        pass
     
 print(løsning)
             
